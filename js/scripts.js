@@ -8,13 +8,22 @@ $(document).ready(function() {
   });
 });
 
+var illegalChars = ['!', '@', '#', '?', ',', '.', '&', "(", ')',]
+
 var insertAtt = function(string, index , subString) {
   return string.substr(0, index) + subString + string.substr(index);
 }
 
 
 var cryptoSquare = function(sentence) {
-var string = sentence.replace(/\s/g,'');
+var string = sentence
+debugger;
+for (var i = 0; i < string.length; i++) {
+  if ( illegalChars.includes(string.charAt(i))) {
+    string = string.replace(string[i], " ");
+  }
+}
+string = string.replace(/\s/g,'');
 var codeWord='';
 var boxCol = Math.floor(Math.sqrt(string.length));
   for (var j = 0; j < boxCol; j++) {
@@ -22,7 +31,6 @@ var boxCol = Math.floor(Math.sqrt(string.length));
       codeWord +=(string.charAt(i));
     }
   }
-  debugger;
   codeWord = insertAtt(codeWord, 5, " ");
 
   alert(codeWord);
