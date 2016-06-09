@@ -1,39 +1,23 @@
+// front end logic
 var romanNumeralsArray = [];
 $(document).ready(function() {
   $('form#input').submit(function(event) {
     event.preventDefault();
     var userInput = $('input#number').val();
-    cryptoSquare(userInput);
-    $('#result').text(answer);
+    $('#result').text(cryptoSquare(userInput));
   });
 });
-var answer;
-var illegalChars = ['!', '@', '#', '?', ',', '.', '&', "(", ')',]
-
-var insertAtt = function(string, index , subString) {
-  return string.substr(0, index) + subString + string.substr(index);
-}
-
-
+// back end logic
 var cryptoSquare = function(sentence) {
-  var string = sentence.toLowerCase();
-  for (var i = 0; i < string.length; i++) {
-    if ( illegalChars.includes(string.charAt(i))) {
-      string = string.replace(string[i], " ");
-    }
-  }
-  string = string.replace(/\s/g,'');
+  var string = sentence.toLowerCase().replace(/\W/g,'');
   var codeWord='';
-  var boxCol = Math.floor(Math.sqrt(string.length));
-    for (var j = 0; j < boxCol; j++) {
-      for (var i = j; i < string.length; i += boxCol) {
+    for (var j = 0; j < Math.floor(Math.sqrt(string.length)); j++) {
+      for (var i = j; i < string.length; i += Math.floor(Math.sqrt(string.length))) {
         codeWord +=(string.charAt(i));
       }
     }
     for (var i = 5; i < codeWord.length; i += 6) {
-      codeWord = insertAtt(codeWord, i, " ");
+      codeWord = codeWord.substr(0, i) + " " + codeWord.substr(i);
     }
-
-
-    answer = codeWord;
+  return codeWord;
 }
