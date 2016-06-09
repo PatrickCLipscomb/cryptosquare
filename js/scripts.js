@@ -31,7 +31,10 @@ var boxCol = Math.floor(Math.sqrt(string.length));
       codeWord +=(string.charAt(i));
     }
   }
-  codeWord = insertAtt(codeWord, 5, " ");
+  for (var i = 5; i < codeWord.length; i += 6) {
+    codeWord = insertAtt(codeWord, i, " ");
+  }
+
 
   alert(codeWord);
 }
