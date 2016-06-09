@@ -16,25 +16,24 @@ var insertAtt = function(string, index , subString) {
 
 
 var cryptoSquare = function(sentence) {
-var string = sentence.toLowerCase();
-debugger;
-for (var i = 0; i < string.length; i++) {
-  if ( illegalChars.includes(string.charAt(i))) {
-    string = string.replace(string[i], " ");
-  }
-}
-string = string.replace(/\s/g,'');
-var codeWord='';
-var boxCol = Math.floor(Math.sqrt(string.length));
-  for (var j = 0; j < boxCol; j++) {
-    for (var i = j; i < string.length; i += boxCol) {
-      codeWord +=(string.charAt(i));
+  var string = sentence.toLowerCase();
+  for (var i = 0; i < string.length; i++) {
+    if ( illegalChars.includes(string.charAt(i))) {
+      string = string.replace(string[i], " ");
     }
   }
-  for (var i = 5; i < codeWord.length; i += 6) {
-    codeWord = insertAtt(codeWord, i, " ");
-  }
+  string = string.replace(/\s/g,'');
+  var codeWord='';
+  var boxCol = Math.floor(Math.sqrt(string.length));
+    for (var j = 0; j < boxCol; j++) {
+      for (var i = j; i < string.length; i += boxCol) {
+        codeWord +=(string.charAt(i));
+      }
+    }
+    for (var i = 5; i < codeWord.length; i += 6) {
+      codeWord = insertAtt(codeWord, i, " ");
+    }
 
 
-  alert(codeWord);
+    alert(codeWord);
 }
