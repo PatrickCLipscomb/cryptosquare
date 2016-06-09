@@ -16,7 +16,7 @@ var insertAtt = function(string, index , subString) {
 
 
 var cryptoSquare = function(sentence) {
-var string = sentence
+var string = sentence.toLowerCase();
 debugger;
 for (var i = 0; i < string.length; i++) {
   if ( illegalChars.includes(string.charAt(i))) {
