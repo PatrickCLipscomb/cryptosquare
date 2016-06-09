@@ -4,10 +4,10 @@ $(document).ready(function() {
     event.preventDefault();
     var userInput = $('input#number').val();
     cryptoSquare(userInput);
-    // $('#result').text(answer);
+    $('#result').text(answer);
   });
 });
-
+var answer;
 var illegalChars = ['!', '@', '#', '?', ',', '.', '&', "(", ')',]
 
 var insertAtt = function(string, index , subString) {
@@ -35,5 +35,5 @@ var cryptoSquare = function(sentence) {
     }
 
 
-    alert(codeWord);
+    answer = codeWord;
 }
